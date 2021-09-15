@@ -10,6 +10,7 @@ public class Candidat implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false, updatable = false)
     private Integer id;
+    private String code;
     private String nom;
     private String prenom;
     private String imageUrl;
@@ -17,8 +18,9 @@ public class Candidat implements Serializable {
     public Candidat() {
     }
 
-    public Candidat(Integer id, String nom, String prenom, String imageUrl) {
+    public Candidat(Integer id, String code, String nom, String prenom, String imageUrl) {
         this.id = id;
+        this.code = code;
         this.nom = nom;
         this.prenom = prenom;
         this.imageUrl = imageUrl;
@@ -30,6 +32,14 @@ public class Candidat implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public String getNom() {
