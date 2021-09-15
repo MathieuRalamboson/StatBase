@@ -4,13 +4,14 @@ import com.MathieuRalamboson.statBase.Exception.ApplicationException;
 import com.MathieuRalamboson.statBase.Interface.InterfacePersistanceCandidat;
 import com.MathieuRalamboson.statBase.Model.Candidat;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-@Transactional
+@Service
 public class GestionnaireCandidat {
 
     @Autowired
