@@ -17,6 +17,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
+@RequestMapping("/candidat")
 public class ApiControllerCandidat {
 
     @Autowired
@@ -65,7 +66,7 @@ public class ApiControllerCandidat {
      * Effectue la récupération de la liste de tous les candidats en BDD
      * @return
      */
-    @RequestMapping(path = "/getAllCandidat",method = RequestMethod.GET)
+    @RequestMapping(path = "/getAll",method = RequestMethod.GET)
     public ResponseEntity<List<Candidat>> handleGetAllCandidat() {
         List<Candidat> list = gestionnaireCandidat.findAllCandidat();
         return new ResponseEntity(list,HttpStatus.OK);
@@ -76,7 +77,7 @@ public class ApiControllerCandidat {
      * @param id
      * @return
      */
-    @RequestMapping(path = "/findCandidateById/{id}", method = RequestMethod.GET)
+    @RequestMapping(path = "/find/{id}", method = RequestMethod.GET)
     public ResponseEntity<Object> handleFindCandidateById(@PathVariable Integer id) {
         if (gestionnaireCandidat.findCandidatById(id) != null) {
             Optional<Candidat> candidat = gestionnaireCandidat.findCandidatById(id);
