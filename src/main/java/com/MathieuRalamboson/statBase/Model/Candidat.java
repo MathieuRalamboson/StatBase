@@ -7,9 +7,11 @@ import java.io.Serializable;
 public class Candidat implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false, updatable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(nullable = true, updatable = false)
     private Integer id;
+
+    @Column(nullable = false, updatable = false)
     private String code;
     private String nom;
     private String prenom;

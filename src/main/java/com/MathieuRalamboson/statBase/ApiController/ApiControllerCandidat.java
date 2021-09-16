@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import sun.rmi.transport.ObjectTable;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -44,6 +45,7 @@ public class ApiControllerCandidat {
             @PathVariable Integer id,
             @RequestBody Candidat candidat) {
         if(gestionnaireCandidat.findCandidatById(id) != null) {
+            candidat.setId(id);
             gestionnaireCandidat.updateCandidat(candidat);
             return new ResponseEntity<>(candidat, HttpStatus.OK);
         } else {
@@ -56,6 +58,7 @@ public class ApiControllerCandidat {
      * @param id
      * @return
      */
+    @Transactional
     @RequestMapping(path = "/delete/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<Object> handleDelete(@PathVariable Integer id){
         gestionnaireCandidat.deleteCandidat(id);
