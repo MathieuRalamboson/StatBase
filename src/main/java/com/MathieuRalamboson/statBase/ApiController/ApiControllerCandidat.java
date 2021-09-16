@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import sun.rmi.transport.ObjectTable;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class ApiControllerCandidat {
@@ -68,6 +69,21 @@ public class ApiControllerCandidat {
     public ResponseEntity<List<Candidat>> handleGetAllCandidat() {
         List<Candidat> list = gestionnaireCandidat.findAllCandidat();
         return new ResponseEntity(list,HttpStatus.OK);
+    }
+
+    /**
+     * Effectue la récuperttion d'un candidat rechercher
+     * @param id
+     * @return
+     */
+    @RequestMapping(path = "/findCandidateById/{id}", method = RequestMethod.GET)
+    public ResponseEntity<Object> handleFindCandidateById(@PathVariable Integer id) {
+        if (gestionnaireCandidat.findCandidatById(id) != null) {
+            Optional<Candidat> candidat = gestionnaireCandidat.findCandidatById(id);
+            return new ResponseEntity<>(candidat,HttpStatus.OK);
+        } else {
+            throw new ApplicationException("Le candidat rechercher n'a pas été trouver.");
+        }
     }
 
 
