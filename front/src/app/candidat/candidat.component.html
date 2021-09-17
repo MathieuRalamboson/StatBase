@@ -1,1 +1,8 @@
-<p>candidat works!</p>
+<h2>Liste des candidats à la présidentiel</h2>
+<div *ngFor="let candidat of candidats">
+    <div>
+        {{candidat.nom}}
+        {{candidat.prenom}}
+    </div>
+</div>
+

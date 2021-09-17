@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Candidate } from './candidat';
+import { Candidat} from '../candidat';
 import { environment } from 'src/environments/environment';
 
 @Injectable({providedIn: 'root'})
@@ -16,7 +16,7 @@ export class CandidatService {
    */
   public getAllCandidat(): Observable<any> {
     const url = `${this._server}/candidat/getAll`;
-    return this.http.get<Candidate[]>(url)
+    return this.http.get<Candidat[]>(url)
   }
 
   /**
